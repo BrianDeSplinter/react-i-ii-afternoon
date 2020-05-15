@@ -2,8 +2,9 @@ import React, {Component} from 'react';
 import './App.css';
 // import Person from './Components/Person'
 import People from './Components/People'
-import MoveNext from './Components/MoveNext'
+// import MoveNext from './Components/MoveNext'
 import MovePrevious from './Components/MovePrevious'
+import MoveNext from './Components/MoveNext';
 
 class App extends Component{
   constructor(){
@@ -11,8 +12,19 @@ class App extends Component{
     this.state ={
       currentPerson: 1
     }
+    this.moveNext = this.moveNext.bind(this)
   }
-  
+
+  moveNext(){
+    let value = this.state.currentPerson
+    console.log(this.state.currentPerson)
+    value++
+    console.log(this.state.currentPerson)
+    this.setState({
+      currentPerson: value
+    })
+  }
+
   render(){
     const arrow = '<'
     return(
@@ -33,7 +45,7 @@ class App extends Component{
               <div className='New'>New</div>
             </div>
             <div className='Next'>
-              <button onClick={() => <MoveNext number={this.currentPerson}/>}>Next ></button>
+              <button onClick={() => <MoveNext person = {this.state}/> }>Next ></button>
             </div>
           </div>
         </div>
